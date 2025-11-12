@@ -1,50 +1,75 @@
-# Welcome to your Expo app 👋
+# Aplicativo Mobile - Papelaria Candy
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo mobile desenvolvido em **React Native com Expo** para a disciplina de Tecnologias Móveis e Híbridas. Este app consome a API `gestao-papelaria-api` (Spring Boot) para realizar o gerenciamento de produtos de uma papelaria.
 
-## Get started
+O projeto cumpre os requisitos do trabalho, implementando:
+* **CRUD** (Cadastrar, Listar, Editar, Excluir).
+* **Navegação por Abas (Tab Navigation):** Para as telas principais (Home, Produtos, Cadastrar).
+* **Navegação por Pilha (Stack Navigation):** Para o fluxo de CRUD (ex: clicar em um item para editar).
 
-1. Install dependencies
+## ✨ Funcionalidades
 
-   ```bash
-   npm install
-   ```
+* **Listagem de Produtos (GET):** Busca e exibe os produtos da API em uma `FlatList` com atualização automática (`useFocusEffect`).
+* **Cadastro de Produtos (POST):** Formulário em uma tela de "stack" com `Picker` para carregar as categorias.
+* **Edição de Produtos (PUT & GET by ID):** Tela de "stack" que busca dados do produto pelo ID e preenche o formulário.
+* **Exclusão de Produtos (DELETE):** Botão com validação/confirmação (`window.confirm` ou `Alert.alert`) na tela de edição.
+* **Navegação Avançada:** Uso de **Expo Router** para gerenciar as rotas de abas e pilha.
 
-2. Start the app
+## 🛠️ Tecnologias Utilizadas
 
-   ```bash
-   npx expo start
-   ```
+* **React Native**
+* **Expo (SDK 50+)**
+* **Expo Router** (Navegação baseada em arquivos)
+* **Axios** (Requisições HTTP)
+* **@react-native-picker/picker**
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🚀 Como Executar o Projeto
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+**Este projeto é um front-end e depende do back-end (API) para funcionar.** Siga os dois passos abaixo:
 
-## Get a fresh project
+### 1. (Pré-requisito) Rodando o Back-end (API)
 
-When you're ready, run:
+1.  Clone o repositório da API:
+    ```bash
+    git clone [https://github.com/NataniMoraes/gestao-papelaria-api.git](https://github.com/NataniMoraes/gestao-papelaria-api.git)
+    cd gestao-papelaria-api
+    ```
 
-```bash
-npm run reset-project
-```
+2.  **Configure o Banco de Dados:**
+    * Crie um banco MySQL chamado `gestao_papelaria`.
+    * Abra o arquivo `src/main/resources/application.properties` e configure seu usuário e senha do MySQL.
+    * (Opcional) Execute o script `data-load-script.sql` (incluído na raiz da API) para popular o banco com dados.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+3.  Rode a API:
+    ```bash
+    mvn spring-boot:run
+    ```
 
-## Learn more
+4.  **A API deve estar rodando em `http://localhost:8080`.** Mantenha este terminal aberto.
 
-To learn more about developing your project with Expo, look at the following resources:
+### 2. Rodando o App Mobile (Este Projeto)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1.  Abra um **novo terminal**.
+2.  Clone este repositório:
+    ```bash
+    git clone [https://github.com/NataniMoraes/papelaria-candy-mobile.git](https://github.com/NataniMoraes/papelaria-candy-mobile.git)
+    cd papelaria-candy-mobile
+    ```
 
-## Join the community
+3.  Instale as dependências:
+    ```bash
+    npm install
+    ```
 
-Join our community of developers creating universal apps.
+4.  Rode o projeto:
+    ```bash
+    npm start
+    ```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+5.  O terminal mostrará um QR Code.
+    * **Para o celular:** Baixe o app **Expo Go** (Android/iOS) e escaneie o QR Code.
+    * **Para o navegador:** Aperte `w` no terminal para abrir no seu navegador.
+
+> **Nota de Teste:** Ao rodar no navegador, você pode inspecionar as chamadas de API nas **Ferramentas de Desenvolvedor** (tecla `F12`) na aba **"Rede" (Network)**.
