@@ -40,7 +40,7 @@ O projeto cumpre os requisitos do trabalho, implementando:
 2.  **Configure o Banco de Dados:**
     * Crie um banco MySQL chamado `gestao_papelaria`.
     * Abra o arquivo `src/main/resources/application.properties` e configure seu usuário e senha do MySQL.
-    * (Opcional) Execute o script `data-load-script.sql` (incluído na raiz da API) para popular o banco com dados.
+    * (Opcional) Execute o script `gestao-papelaria.sql` (incluído na raiz da API) para popular o banco com dados.
 
 3.  Rode a API:
     ```bash
